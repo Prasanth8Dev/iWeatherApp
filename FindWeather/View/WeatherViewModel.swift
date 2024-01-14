@@ -9,10 +9,11 @@ import Foundation
 
 protocol WeatherViewModelProtocol {
     func fetchWeatherData(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void)
-    func fetchForecastData(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void)
+    func fetchForecastData(latitude: Double, longitude: Double, completion: @escaping (Result<ForecastModel, Error>) -> Void)
 }
 
-class WeatherViewModel : WeatherViewModelProtocol {
+class WeatherViewModel: WeatherViewModelProtocol {
+    
     private let service: APIService
 
     init(service: APIService) {
@@ -21,11 +22,12 @@ class WeatherViewModel : WeatherViewModelProtocol {
 
     func fetchWeatherData(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         let weatherURL = APIConstants.weatherURL(latitude: latitude, longitude: longitude)
-        service.fetchData(url: weatherURL, completion: completion)
+        service.fetchData(type: WeatherModel.self, url: weatherURL, completion: completion)
     }
-
-    func fetchForecastData(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+    
+    func fetchForecastData(latitude: Double, longitude: Double, completion: @escaping (Result<ForecastModel, Error>) -> Void) {
         let forecastURL = APIConstants.forecastURL(latitude: latitude, longitude: longitude)
-        service.fetchData(url: forecastURL, completion: completion)
+        service.fetchData(type: ForecastModel.self, url: forecastURL, completion: completion)
+
     }
 }

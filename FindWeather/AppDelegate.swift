@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var weatherViewModel: WeatherViewModelProtocol!
     var navigationController: UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        apiService = APIWarpper()
+        apiService = APIWrapper()
         weatherViewModel = WeatherViewModel(service: apiService)
         
         // Set up the initial view controller with dependency injection

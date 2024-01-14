@@ -11,28 +11,28 @@ import CoreLocation
 class SearchLocationWeatherVC: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tempList_Table: UITableView! {
+    @IBOutlet weak var tempListTable: UITableView! {
         didSet {
-            self.tempList_Table.delegate = self
-            self.tempList_Table.dataSource = self
+            self.tempListTable.delegate = self
+            self.tempListTable.dataSource = self
         }
     }
     var finalLatitude = 0
     var finalLongitude = 0
     var weatherViewModel: WeatherViewModelProtocol?
-    
-   // var weatherViewModel = WeatherViewModel()
-    
+    var forecastData : ForecastModel?
+
     override func viewWillAppear(_ animated: Bool) {
         searchBar.delegate = self
-        // If you want to show the keyboard immediately when the view appears
         searchBar.becomeFirstResponder()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("-------",searchText)
         if searchText.count > 0 {
@@ -48,20 +48,22 @@ class SearchLocationWeatherVC: UIViewController, UISearchBarDelegate {
             }
         }
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         // Hide the keyboard when the "Search" button is tapped
          searchBar.resignFirstResponder()
-        print("----end",searchBar.text)
+        print("----end",searchBar.text ?? "")
         fetchSearchLocation()
-         
-         // Perform any additional search-related actions here
      }
+    
     func fetchSearchLocation() {
-        weatherViewModel?.fetchForecastData(latitude: Double(self.finalLatitude), longitude: Double(self.finalLongitude), completion: { response in
+        weatherViewModel?.fetchForecastData(latitude:  Double(self.finalLatitude), longitude: Double(self.finalLongitude), completion: { response in
             switch response {
             case .success(let success):
                 print("Weather Data: \(success)")
-               
+                self.forecastData = success
+                DispatchQueue.main.async {
+                    self.tempListTable.reloadData()
+                }
                 
             case .failure(let failure):
                 print("-----Failure", failure.localizedDescription)
@@ -70,7 +72,7 @@ class SearchLocationWeatherVC: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("----end",searchBar.text)
+        print("----end",searchBar.text ?? "")
     }
 
     @IBAction func back(_ sender: Any) {

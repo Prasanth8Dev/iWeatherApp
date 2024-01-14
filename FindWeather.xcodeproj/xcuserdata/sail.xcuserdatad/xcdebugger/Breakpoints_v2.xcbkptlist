@@ -5,19 +5,300 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "98E11146-5714-49DF-9844-909AF7A9ED56"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9A0E1BB-FB42-4515-8DEE-EB9ED51FAABC"
+            uuid = "12BC4F64-7F49-4161-8895-E740AF71FEEC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindWeather/View/ViewControllers/HomeWeatherVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12BC4F64-7F49-4161-8895-E740AF71FEEC - f2441892e5e321d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Bool) -&gt; () in FindWeather.HomeWeatherVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "856">
+               </Location>
+               <Location
+                  uuid = "12BC4F64-7F49-4161-8895-E740AF71FEEC - b97bf3c163e6d05a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (Swift.Bool) -&gt; () in FindWeather.HomeWeatherVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "12BC4F64-7F49-4161-8895-E740AF71FEEC - b97bf3c163e6d05a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (Swift.Bool) -&gt; () in FindWeather.HomeWeatherVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6D5D03A-3004-4891-BA34-DF5B0A65E4CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "fetchForecastAPI(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6D5D03A-3004-4891-BA34-DF5B0A65E4CD - 390524a433a28e2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.fetchForecastAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "B6D5D03A-3004-4891-BA34-DF5B0A65E4CD - 390524a433a28e2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.fetchForecastAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "B6D5D03A-3004-4891-BA34-DF5B0A65E4CD - 6c13b026cb049f6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;FindWeather.ForecastModel, Swift.Error&gt;) -&gt; () in FindWeather.HomeWeatherVC.fetchForecastAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D951FD0C-FBE6-42ED-809F-8BE5844A9661"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "fetchWeatherAPI(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D951FD0C-FBE6-42ED-809F-8BE5844A9661 - 67be37b8631969d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.fetchWeatherAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "D951FD0C-FBE6-42ED-809F-8BE5844A9661 - 67be37b8631969d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.fetchWeatherAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D951FD0C-FBE6-42ED-809F-8BE5844A9661 - fa52d0b9896559f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;FindWeather.WeatherModel, Swift.Error&gt;) -&gt; () in FindWeather.HomeWeatherVC.fetchWeatherAPI(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6789A675-2FBF-4449-A52C-D929DEC90931"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6789A675-2FBF-4449-A52C-D929DEC90931 - 9db68aa3bbcef79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.viewDidLoad() -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "6789A675-2FBF-4449-A52C-D929DEC90931 - 9db68aa3bbcef26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.viewDidLoad() -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C12D1C21-D0AF-43C1-BA73-8B83FE1F7329"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/HomeWeatherCollection.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C12D1C21-D0AF-43C1-BA73-8B83FE1F7329 - 9aceaa3432077fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherCollection.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "C12D1C21-D0AF-43C1-BA73-8B83FE1F7329 - 9aceaa3432077fb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.HomeWeatherVC.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sail/Documents/Kathiravan/Kathiravan/FindWeather/FindWeather/View/ViewControllers/HomeWeatherCollection.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -15,7 +15,7 @@ extension SearchLocationWeatherVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tabCell = tempList_Table.dequeueReusableCell(withIdentifier: "TempListTable", for: indexPath) as! TempListTable
+        let tabCell = tempListTable.dequeueReusableCell(withIdentifier: "TempListTable", for: indexPath) as! TempListTable
         return tabCell
     }
     
@@ -23,5 +23,8 @@ extension SearchLocationWeatherVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 class TempListTable : UITableViewCell {
+    @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
 }

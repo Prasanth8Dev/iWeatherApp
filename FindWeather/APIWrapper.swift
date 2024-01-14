@@ -8,12 +8,12 @@
 import Foundation
 
 protocol APIService {
-    func fetchData(url: URL, completion: @escaping (Result<WeatherModel, Error>) -> Void)
+    func fetchData<T: Codable>(type: T.Type, url: URL, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-
-class APIWarpper: APIService {
-    func fetchData(url: URL, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+class APIWrapper: APIService {
+    func fetchData<T: Codable>(type: T.Type,url: URL, completion: @escaping (Result<T, Error>) -> Void) {
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -32,9 +32,9 @@ class APIWarpper: APIService {
 
             do {
                 let decoder = JSONDecoder()
-                let weatherData = try decoder.decode(WeatherModel.self, from: data)
-                completion(.success(weatherData))
-                print(weatherData,"Weather Data")
+                let forecastData = try decoder.decode(T.self, from: data)
+                completion(.success(forecastData))
+                print(forecastData, " Data")
             } catch {
                 completion(.failure(error))
             }

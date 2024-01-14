@@ -383,7 +383,4 @@ func newJSONEncoder() -> JSONEncoder {
     }
     return encoder
 }
-
-struct ForecastModel {
-}
-    
+  

@@ -10,6 +10,7 @@ import CoreLocation
 
 class HomeWeatherVC: UIViewController {
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var searchImage: UIImageView!
@@ -20,20 +21,27 @@ class HomeWeatherVC: UIViewController {
     @IBOutlet weak var fahrenheitLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var todayWeatherCollView : UICollectionView!{
         didSet {
             self.todayWeatherCollView.delegate = self
             self.todayWeatherCollView.dataSource = self
         }
     }
+    var locationDataClosure: ((_ lat:Double, _ lon:Double) -> Void)?
     
     let locationManager = CLLocationManager()
     var timer: Timer?
-    let dynamicLatitude = 12.9675
-    let dynamicLongitude = 80.1491
+    var dynamicLatitude = 0.0
+    var dynamicLongitude = 0.0
+    let concurrentThread = DispatchGroup()
     
     public var weatherViewModel: WeatherViewModelProtocol?
     var weatherData: WeatherModel?
+    var forecastData : ForecastModel?
+    var refreshControl = UIRefreshControl()
+    
+    
     
     init(weatherViewModel: WeatherViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
@@ -46,35 +54,76 @@ class HomeWeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        self.mainView.addSubview(refreshControl)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print("-----",self.mainView.frame.height)
+        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.mainView.frame.height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.coreLocation()
+        fetchUserLocation()
         self.today()
         if let tapImage = searchImage {
             tapImage.addAction(for: .tap) {
                 self.navigateToSearchViewController()
             }
         }
+  
+       
+    }
+    
+    private func fetchUserLocation(){
+        self.coreLocation()
+        self.locationDataClosure = { lat,lon in
+            self.dynamicLatitude = lat
+            self.dynamicLongitude = lon
+            self.loadCurrentLocationWeather()
+        }
+    }
+
+    private func loadCurrentLocationWeather() {
+        // Loader start
+        var fetchWeatherSuccess = false
+        concurrentThread.enter()
         fetchWeatherAPI { [weak self] (success) in
             guard let `self` = self  else {return}
             if success {
-                self.loadAllWeatherData()
+                fetchWeatherSuccess = success
+                self.concurrentThread.leave()
+            } else {
+                self.concurrentThread.leave()
+            }
+        }
+        concurrentThread.enter()
+        fetchForecastAPI { [weak self] (success) in
+            guard let `self` = self  else {return}
+            if success {
+                print(success, "fetchForecastAPI success")
+                fetchWeatherSuccess = success
+                self.concurrentThread.leave()
+            } else {
+                self.concurrentThread.leave()
+            }
+        }
+        concurrentThread.notify(queue: .main){
+            if fetchWeatherSuccess {
+                DispatchQueue.main.async {
+                    self.todayWeatherCollView.reloadData()
+                    self.loadAllWeatherData()
+                    // Loader Stop
+                }
             }
         }
     }
     
-    private func loadAllWeatherData(){
-        if  let tempData = weatherData?.main?.temp, let pressure = weatherData?.main?.pressure, let f = weatherData?.main?.feelsLike, let place = weatherData?.name
-        {
-            temperatureLabel.text = String(self.fahrenheitToCelsius(fahrenheit:Double(tempData)).rounded())
-            pressureLabel.text = String(pressure)
-            fahrenheitLabel.text = String(f)
-            weatherNameLabel.text = place
-            
-        }
+    @objc func refreshData() {
+        loadCurrentLocationWeather()
+       // self.todayWeatherCollView.reloadData()
+        self.refreshControl.endRefreshing()
     }
-    
     
     @IBAction func nextFiveDaysAc(_ sender: Any) {
         self.navigateToSearchViewController()
@@ -90,17 +139,8 @@ class HomeWeatherVC: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        let firstRange = NSRange(location: 0, length: 8)
-        let secondRange = NSRange(location: 9, length: 9)
-        let titleattributeString = NSMutableAttributedString(string: "Bandung, Indonesia")
-        titleattributeString.addAttribute(NSMutableAttributedString.Key.foregroundColor, value: UIColor.black, range: firstRange)
-        titleattributeString.addAttribute(NSMutableAttributedString.Key.foregroundColor, value: UIColor.gray, range: secondRange)
-        titleattributeString.addAttribute(NSMutableAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 28), range: firstRange)
-        titleattributeString.addAttribute(NSMutableAttributedString.Key.font, value: UIFont.systemFont(ofSize: 25), range: secondRange)
-        if let location = locationNameLabel {
-            location.attributedText = titleattributeString
-        }
     }
+    
     func fahrenheitToCelsius(fahrenheit: Double) -> Double {
         return (fahrenheit - 32) / 1.8
     }
@@ -115,9 +155,27 @@ class HomeWeatherVC: UIViewController {
             today.text = formattedDate
         }
     }
+    func convertTimestampToDate(timestamp: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: date)
+    }
+    
+    private func loadAllWeatherData(){
+        if let data = weatherData, let tempData = weatherData?.main?.temp, let pressure = weatherData?.main?.pressure, let f = weatherData?.main?.feelsLike, let place = weatherData?.name, let locationName = self.forecastData?.timezone {
+            temperatureLabel.text = String(self.fahrenheitToCelsius(fahrenheit:Double(tempData)).rounded())
+            pressureLabel.text = String(pressure)
+            fahrenheitLabel.text = String(f)
+            weatherNameLabel.text = place
+            sunriseLabel.text = String(convertTimestampToDate(timestamp: TimeInterval(data.sys?.sunrise ?? 0)))
+            windLabel.text = "\(data.wind?.speed?.rounded() ?? 0)"
+            locationNameLabel.text = String(locationName)
+        }
+    }
     
     func fetchWeatherAPI(completion:@escaping(Bool)->Void) {
-        weatherViewModel?.fetchWeatherData(latitude: dynamicLatitude, longitude: dynamicLongitude) { result in
+        weatherViewModel?.fetchWeatherData(latitude: self.dynamicLatitude, longitude: self.dynamicLongitude) { result in
             switch result {
             case .success(let weatherModel):
                 print("Weather Data: \(weatherModel)")
@@ -135,4 +193,18 @@ class HomeWeatherVC: UIViewController {
         }
     }
     
+    func fetchForecastAPI(completion: @escaping (Bool)->Void) {
+        weatherViewModel?.fetchForecastData(latitude:  Double(self.dynamicLatitude), longitude: Double(self.dynamicLongitude), completion: { response in
+            switch response {
+            case .success(let success):
+                print("fetchForecastAPI Data: \(success)")
+                self.forecastData = success
+              
+                completion(true)
+            case .failure(let failure):
+                print("-----Failure", failure.localizedDescription)
+                completion(false)
+            }
+        })
+    }
 }
