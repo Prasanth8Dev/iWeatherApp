@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreLocation
+import NVActivityIndicatorView
+
 
 class HomeWeatherVC: UIViewController {
     
@@ -40,7 +42,9 @@ class HomeWeatherVC: UIViewController {
     var weatherData: WeatherModel?
     var forecastData : ForecastModel?
     var refreshControl = UIRefreshControl()
-    
+//    @IBOutlet var circularProgressBar: LoaderAnimation!
+    var loader: NVActivityIndicatorView!
+   
     
     
     init(weatherViewModel: WeatherViewModelProtocol) {
@@ -54,13 +58,21 @@ class HomeWeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.initLoader()
+        self.mainView.isHidden = true
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         self.mainView.addSubview(refreshControl)
     }
+    private func initLoader() {
+        loader = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 60, height: 60),type: .ballClipRotateMultiple,color: .cyan)
+        loader.center = self.view.center
+        self.view.addSubview(loader)
+        loader.startAnimating()
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         print("-----",self.mainView.frame.height)
-        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.mainView.frame.height)
+       // scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.mainView.frame.height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,8 +121,10 @@ class HomeWeatherVC: UIViewController {
             }
         }
         concurrentThread.notify(queue: .main){
+            self.loader.stopAnimating()
             if fetchWeatherSuccess {
                 DispatchQueue.main.async {
+                    self.mainView.isHidden = false
                     self.todayWeatherCollView.reloadData()
                     self.loadAllWeatherData()
                     // Loader Stop

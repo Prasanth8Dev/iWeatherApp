@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 import CoreLocation
-
+import Kingfisher
 
 
 class WeatherCollectionViewCell : UICollectionViewCell {
@@ -28,18 +28,6 @@ extension HomeWeatherVC : CLLocationManagerDelegate, UICollectionViewDelegate, U
                        return
                    }
                    self.locationDataClosure!(location.coordinate.latitude,location.coordinate.longitude)
-                   if let error = error {
-                       
-                   } else if let placemark = placemarks?.first {
-                       if let city = placemark.locality,
-                          let state = placemark.administrativeArea {
-                           
-                       } else {
-                           if let locName = self.locationNameLabel {
-                               locName.text = "Location not available"
-                           }
-                       }
-                   }
                }
            }
        }
@@ -49,17 +37,19 @@ extension HomeWeatherVC : CLLocationManagerDelegate, UICollectionViewDelegate, U
        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return forecastData?.daily.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let collCell  = todayWeatherCollView.dequeueReusableCell(withReuseIdentifier: "WeatherCollectionViewCell", for: indexPath) as! WeatherCollectionViewCell
-        if let weatherData = weatherData?.main {
+        if let weatherData = weatherData {
             print(weatherData, "______WeatherCollectionViewCell")
-            collCell.tempLabel.text = "\(weatherData.temp ?? 0)"
-            if let icon = forecastData?.current.weather[indexPath.row].icon, let imgURL = URL(string: "https://openweathermap.org/img/w/\(icon).png") {
-                //Nuke.loadImage(with: imgURL, into: collCell.weatherImage)
+            collCell.tempLabel.text = "\(weatherData.main?.temp ?? 0)"
+            if let icon = forecastData?.daily[indexPath.row].weather[0].icon ,let imgURL = URL(string: "https://openweathermap.org/img/w/\(icon).png"), let desc = forecastData?.daily[indexPath.row].weather[0].description {
+                collCell.weatherImage.kf.setImage(with: imgURL)
+                collCell.descriptionLabel.text = desc
             }
+         
         }
         return collCell
     }

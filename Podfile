@@ -6,8 +6,9 @@ target 'FindWeather' do
   use_frameworks!
 
   # Pods for FindWeather
- #pod 'LoaderAnimation'
-# pod 'Nuke', '~> 10.7'
+ 
+ pod 'Kingfisher'
+ pod 'NVActivityIndicatorView'
 
   target 'FindWeatherTests' do
     inherit! :search_paths

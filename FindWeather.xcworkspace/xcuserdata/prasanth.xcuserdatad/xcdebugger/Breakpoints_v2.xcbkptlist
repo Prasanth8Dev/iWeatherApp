@@ -7,16 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "097CB3BE-D587-45C8-99C1-E3B1257CD646"
+            uuid = "497160D2-B02C-4480-8B07-3556FF5EA808"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FindWeather/View/ViewControllers/HomeWeatherCollection.swift"
+            filePath = "FindWeather/View/WeatherViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetchForecastData(latitude:longitude:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33E81D43-1A26-494E-8508-1F63F8EFF753"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/SearchLocationWeatherVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "fetchSearchLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "33E81D43-1A26-494E-8508-1F63F8EFF753 - 6757e5292b504a6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FindWeather.SearchLocationWeatherVC.fetchSearchLocation() -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasanth/Downloads/FindWeather%203/FindWeather/View/ViewControllers/SearchLocationWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "33E81D43-1A26-494E-8508-1F63F8EFF753 - 1833a11f2dd064c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;FindWeather.ForecastModel, Swift.Error&gt;) -&gt; () in FindWeather.SearchLocationWeatherVC.fetchSearchLocation() -&gt; ()"
+                  moduleName = "FindWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasanth/Downloads/FindWeather%203/FindWeather/View/ViewControllers/SearchLocationWeatherVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39D89722-677A-4C06-91F0-FD158A5D1F96"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindWeather/View/ViewControllers/SearchLocationWeatherVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "fetchSearchLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
